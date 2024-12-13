@@ -1,30 +1,35 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
  
 int main() 
 {
-    long long n;
+    int n;
     cin >> n;
-    vector<long long> arr1(n), arr2(n);
+    vector<int> arr1(n), arr2(n);
     
-    for (long long i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> arr1[i];
     }
-    for (long long i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> arr2[i];
     }
  
-    long long x = *min_element(arr1.begin(), arr1.end());
-    long long steps = 0;
+    int x = arr1[0];
+    for (int i = 1; i < n; i++) {
+        if (arr1[i] < x) {
+            x = arr1[i];
+        }
+    }
  
-    for (long long i = 0; i < n; i++) {
+    long long steps = 0; 
+    for (int i = 0; i < n; i++) {
         if (arr2[i] == 0) {
             if (arr1[i] != x) {
                 cout << -1 << endl;
                 return 0;
             }
         } else {
-            long long diff = arr1[i] - x;
+            int diff = arr1[i] - x;
             if (diff < 0 || diff % arr2[i] != 0) {
                 cout << -1 << endl;
                 return 0;
